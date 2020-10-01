@@ -1,6 +1,8 @@
 FROM rundeck/ubuntu-base@sha256:e9f21a4252c80b145a18c2d0de55453073b551c5ca737d449df4d942f0d1a443
 
-COPY --chown=rundeck:root .build .
+#COPY --chown=rundeck:root .build .
+RUN wget -O rundeck.war https://dl.bintray.com/rundeck/rundeck-maven/org/rundeck/rundeck/rundeck-3.3.3-20200910.war
+
 RUN java -jar rundeck.war --installonly \
     # Create plugin folder
     && mkdir libext \
